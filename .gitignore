@@ -1,0 +1,60 @@
+# Compiled class files
+target/
+*.class
+
+# Maven
+.mvn/
+!.mvn/wrapper/
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Eclipse
+.settings/
+.classpath
+.project
+.factorypath
+
+# VS Code
+.vscode/
+
+# Spring Boot
+*.jar
+*.war
+*.ear
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+logs/
+
+# Vaadin build files
+node_modules/
+package.json
+package-lock.json
+pnpm-lock.yaml
+webpack.config.js
+webpack.generated.js
+vaadin-generated/
+frontend/generated/
+
+# Vaadin auto-generated frontend folder (produced by prepare-frontend)
+src/main/frontend/generated/
+src/main/frontend/index.html
+
+# Environment / credentials
+.env
+*.env
+application-local.properties
+application-prod.properties
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
