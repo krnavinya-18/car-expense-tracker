@@ -1,6 +1,5 @@
 package com.carexpense.view;
 
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.Div;
@@ -14,7 +13,7 @@ import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
 
 /**
- * Main application shell — sidebar navigation + top navbar.
+ * Main application shell — fixed dark navy sidebar and top navbar.
  *
  * Design tokens:
  *   Primary Navy background      : #0B1F4D
@@ -35,9 +34,42 @@ public class MainLayout extends AppLayout {
         buildNavbar();
         buildSidebar();
 
+        // Inject global styling for perfect sidebar colors, active states, and drawer width
         getElement().executeJs(
             "this.style.setProperty('--vaadin-app-layout-drawer-width', '" + SIDEBAR_W + "');" +
-            "document.documentElement.style.setProperty('--vaadin-app-layout-drawer-width', '" + SIDEBAR_W + "');"
+            "document.documentElement.style.setProperty('--vaadin-app-layout-drawer-width', '" + SIDEBAR_W + "');" +
+            "if (!document.getElementById('custom-nav-styles')) {" +
+            "  const style = document.createElement('style');" +
+            "  style.id = 'custom-nav-styles';" +
+            "  style.innerHTML = `" +
+            "    vaadin-side-nav-item {" +
+            "      --vaadin-side-nav-item-color: rgba(255, 255, 255, 0.85);" +
+            "      --vaadin-side-nav-item-active-color: #FFFFFF !important;" +
+            "      --vaadin-side-nav-item-active-background: " + NAVY_ACTIVE + " !important;" +
+            "      color: rgba(255, 255, 255, 0.85);" +
+            "    }" +
+            "    vaadin-side-nav-item::part(link) {" +
+            "      color: rgba(255, 255, 255, 0.85) !important;" +
+            "      border-radius: 6px;" +
+            "      margin: 2px 4px;" +
+            "      transition: background 0.15s ease;" +
+            "    }" +
+            "    vaadin-side-nav-item::part(link):hover {" +
+            "      background: rgba(255, 255, 255, 0.08) !important;" +
+            "      color: #FFFFFF !important;" +
+            "    }" +
+            "    vaadin-side-nav-item[active]::part(link) {" +
+            "      background: " + NAVY_ACTIVE + " !important;" +
+            "      color: #FFFFFF !important;" +
+            "      border-left: 3px solid #FFFFFF !important;" +
+            "      font-weight: 600 !important;" +
+            "    }" +
+            "    vaadin-side-nav-item vaadin-icon {" +
+            "      color: inherit !important;" +
+            "    }" +
+            "  `;" +
+            "  document.head.appendChild(style);" +
+            "}"
         );
     }
 
@@ -77,7 +109,7 @@ public class MainLayout extends AppLayout {
         nav.setWidthFull();
         nav.getStyle()
            .set("padding", "0.5rem 0.5rem")
-           .set("--vaadin-side-nav-item-color", "rgba(255,255,255,0.88)")
+           .set("--vaadin-side-nav-item-color", "rgba(255,255,255,0.85)")
            .set("--vaadin-side-nav-item-active-color", WHITE)
            .set("--vaadin-side-nav-item-active-background", NAVY_ACTIVE);
 
@@ -89,13 +121,19 @@ public class MainLayout extends AppLayout {
                 "View Expenses", ViewExpensesView.class, VaadinIcon.LIST.create());
         SideNavItem reportsItem = new SideNavItem(
                 "Reports", ReportsView.class, VaadinIcon.BAR_CHART.create());
+        SideNavItem aboutItem = new SideNavItem(
+                "About", AboutView.class, VaadinIcon.INFO_CIRCLE.create());
+        SideNavItem contactItem = new SideNavItem(
+                "Contact", ContactView.class, VaadinIcon.ENVELOPE.create());
 
         styleNavItem(dashboardItem);
         styleNavItem(addExpenseItem);
         styleNavItem(viewExpensesItem);
         styleNavItem(reportsItem);
+        styleNavItem(aboutItem);
+        styleNavItem(contactItem);
 
-        nav.addItem(dashboardItem, addExpenseItem, viewExpensesItem, reportsItem);
+        nav.addItem(dashboardItem, addExpenseItem, viewExpensesItem, reportsItem, aboutItem, contactItem);
 
         Span version = new Span("v1.0  ·  Spring Boot + Vaadin");
         version.getStyle()
@@ -107,13 +145,17 @@ public class MainLayout extends AppLayout {
 
         Div footer = new Div(version);
         footer.setWidthFull();
-        footer.getStyle().set("border-top", "1px solid rgba(255,255,255,0.1)");
+        // Pin footer to bottom naturally using margin-top auto, so navigation stays pinned to TOP
+        footer.getStyle()
+              .set("margin-top", "auto")
+              .set("border-top", "1px solid rgba(255,255,255,0.1)");
 
+        // Top-aligned sidebar container (START, not BETWEEN!)
         VerticalLayout sidebar = new VerticalLayout(brand, nav, footer);
         sidebar.setSizeFull();
         sidebar.setPadding(false);
         sidebar.setSpacing(false);
-        sidebar.setJustifyContentMode(FlexComponent.JustifyContentMode.BETWEEN);
+        sidebar.setJustifyContentMode(FlexComponent.JustifyContentMode.START);
         sidebar.getStyle()
                .set("background", NAVY)
                .set("min-height", "100vh")
@@ -153,7 +195,7 @@ public class MainLayout extends AppLayout {
 
     private void styleNavItem(SideNavItem item) {
         item.getStyle()
-            .set("color", "rgba(255,255,255,0.88)")
+            .set("color", "rgba(255,255,255,0.85)")
             .set("border-radius", "6px")
             .set("margin", "2px 0")
             .set("font-size", "0.88rem")
