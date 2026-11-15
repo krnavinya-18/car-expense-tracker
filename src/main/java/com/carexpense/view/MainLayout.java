@@ -121,8 +121,6 @@ public class MainLayout extends AppLayout {
                 "View Expenses", ViewExpensesView.class, VaadinIcon.LIST.create());
         SideNavItem reportsItem = new SideNavItem(
                 "Reports", ReportsView.class, VaadinIcon.BAR_CHART.create());
-        SideNavItem aboutItem = new SideNavItem(
-                "About", AboutView.class, VaadinIcon.INFO_CIRCLE.create());
         SideNavItem contactItem = new SideNavItem(
                 "Contact", ContactView.class, VaadinIcon.ENVELOPE.create());
 
@@ -130,10 +128,9 @@ public class MainLayout extends AppLayout {
         styleNavItem(addExpenseItem);
         styleNavItem(viewExpensesItem);
         styleNavItem(reportsItem);
-        styleNavItem(aboutItem);
         styleNavItem(contactItem);
 
-        nav.addItem(dashboardItem, addExpenseItem, viewExpensesItem, reportsItem, aboutItem, contactItem);
+        nav.addItem(dashboardItem, addExpenseItem, viewExpensesItem, reportsItem, contactItem);
 
         Span version = new Span("v1.0  ·  Spring Boot + Vaadin");
         version.getStyle()
@@ -145,12 +142,10 @@ public class MainLayout extends AppLayout {
 
         Div footer = new Div(version);
         footer.setWidthFull();
-        // Pin footer to bottom naturally using margin-top auto, so navigation stays pinned to TOP
         footer.getStyle()
               .set("margin-top", "auto")
               .set("border-top", "1px solid rgba(255,255,255,0.1)");
 
-        // Top-aligned sidebar container (START, not BETWEEN!)
         VerticalLayout sidebar = new VerticalLayout(brand, nav, footer);
         sidebar.setSizeFull();
         sidebar.setPadding(false);
