@@ -67,6 +67,9 @@ public class MainLayout extends AppLayout {
             "    vaadin-side-nav-item vaadin-icon {" +
             "      color: inherit !important;" +
             "    }" +
+            "    vaadin-dev-tools {" +
+            "      display: none !important;" +
+            "    }" +
             "  `;" +
             "  document.head.appendChild(style);" +
             "}"
