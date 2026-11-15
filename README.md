@@ -76,7 +76,8 @@ car-expense-tracker/
     │   │       ├── DashboardView.java        # Page 1 — Dashboard statistics
     │   │       ├── AddExpenseView.java        # Page 2 — Add Expense form
     │   │       ├── ViewExpensesView.java      # Page 3 — View / Search / Edit / Delete
-    │   │       └── ReportsView.java           # Page 4 — Spending reports and charts
+    │   │       ├── ReportsView.java           # Page 4 — Spending reports and charts
+    │   │       └── ContactView.java           # Page 5 — Academic contact & feedback form
     │   └── resources/
     │       ├── application.properties        # App configuration
     │       └── schema.sql                    # Oracle table creation script
@@ -231,6 +232,12 @@ Visual spending analysis using Java-based Vaadin components:
 - Category-wise horizontal bar chart with totals
 - Percentage distribution table
 - Monthly spending bar chart
+
+### Page 5 — Contact & Support (`/contact`)
+Academic project communication details and interactive feedback:
+- Course, academic scope, and faculty evaluation details
+- Direct communication channels
+- Validated message and feedback submission form
 
 ---
 
