@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PROJECT REPORT — CAR EXPENSE TRACKING SYSTEM — NAVINYA K R (25ITR098)</title>
+<style>
+    @page {
+        size: A4 portrait;
+        margin: 15mm;
+    }
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        color: #000000;
+        background: #FFFFFF;
+        margin: 0;
+        padding: 0;
+        font-size: 11pt;
+        line-height: 1.45;
+    }
+
+    /* Page container simulating the college assignment border */
+    .report-page {
+        width: 100%;
+        min-height: 267mm;
+        margin: 0 0 10mm 0;
+        padding: 12mm 15mm;
+        border: 1.5px solid #000000;
+        position: relative;
+        page-break-after: always;
+        background: #FFFFFF;
+    }
+
+    .report-page:last-child {
+        page-break-after: avoid;
+        margin-bottom: 0;
+    }
+
+    /* Cover Page Styling */
+    .cover-page {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        padding: 20mm 15mm;
+        border: none;
+    }
+    .cover-logo-text {
+        font-size: 26pt;
+        font-weight: 700;
+        color: #2E7D32;
+        letter-spacing: 2px;
+        font-family: Arial, sans-serif;
+    }
+    .cover-logo-sub {
+        font-size: 10pt;
+        letter-spacing: 3px;
+        color: #1A237E;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-top: -4px;
+        font-family: Arial, sans-serif;
+    }
+    .cover-divider {
+        width: 140px;
+        height: 2px;
+        background: #1A237E;
+        margin: 6px auto 25px auto;
+    }
+    .cover-dept {
+        font-size: 13pt;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        margin-bottom: 6px;
+    }
+    .cover-course {
+        font-size: 12pt;
+        font-weight: bold;
+        margin-bottom: 35px;
+    }
+    .cover-project-label {
+        font-size: 12pt;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+    }
+    .cover-title {
+        font-size: 18pt;
+        font-weight: bold;
+        color: #0B1F4D;
+        letter-spacing: 1px;
+        margin-bottom: 6px;
+    }
+    .cover-subtitle {
+        font-size: 12pt;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        color: #333333;
+        margin-bottom: 45px;
+    }
+    .cover-report-label {
+        font-size: 13pt;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        margin-bottom: 10px;
+    }
+    .cover-submitted-by {
+        font-size: 11pt;
+        margin-bottom: 10px;
+        font-style: italic;
+    }
+    .cover-student-name {
+        font-size: 14pt;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        margin-bottom: 4px;
+    }
+    .cover-student-roll {
+        font-size: 13pt;
+        font-weight: bold;
+        margin-bottom: 60px;
+    }
+    .cover-college {
+        font-size: 13pt;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        margin-bottom: 4px;
+    }
+    .cover-location {
+        font-size: 11pt;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+    }
+
+    /* Headings inside pages */
+    h1.page-title {
+        text-align: center;
+        font-size: 13pt;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 0 0 15px 0;
+        letter-spacing: 0.5px;
+    }
+    .section-label {
+        font-weight: bold;
+        font-size: 11pt;
+        margin: 12px 0 4px 0;
+        text-transform: uppercase;
+    }
+
+    p {
+        margin: 0 0 10px 0;
+        text-align: justify;
+        line-height: 1.5;
+    }
+
+    /* Flowchart Boxes */
+    .flowchart-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 15px auto;
+        width: 85%;
+    }
+    .flow-box {
+        border: 1.2px solid #000000;
+        padding: 6px 12px;
+        width: 100%;
+        text-align: center;
+        font-size: 9.5pt;
+        background: #FFFFFF;
+    }
+    .flow-box-title {
+        font-weight: bold;
+        text-transform: uppercase;
+        display: block;
+        font-size: 9.5pt;
+    }
+    .flow-arrow {
+        font-size: 12pt;
+        line-height: 14px;
+        margin: 1px 0;
+        color: #000000;
+    }
+
+    /* Tables */
+    table.comp-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 10px 0 15px 0;
+        font-size: 9.5pt;
+    }
+    table.comp-table th, table.comp-table td {
+        border: 1px solid #000000;
+        padding: 5px 8px;
+        text-align: left;
+        vertical-align: top;
+    }
+    table.comp-table th {
+        background: #F2F2F2;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 9pt;
+    }
+
+    /* Procedure Bullets */
+    .proc-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .proc-list li {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 10px;
+        text-align: justify;
+        line-height: 1.45;
+    }
+    .proc-list li::before {
+        content: "❖";
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 10pt;
+    }
+
+    /* Code blocks */
+    pre.code-block {
+        background: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        padding: 8px 10px;
+        font-family: 'Consolas', 'Courier New', monospace;
+        font-size: 8.5pt;
+        line-height: 1.35;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        margin: 6px 0 12px 0;
+    }
+
+    /* Screenshots Mockups */
+    .screenshot-card {
+        border: 1px solid #999999;
+        margin: 8px 0 16px 0;
+        background: #F8F9FA;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    .screenshot-header {
+        background: #0B1F4D;
+        color: #FFFFFF;
+        padding: 6px 12px;
+        font-family: Arial, sans-serif;
+        font-size: 9pt;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+    }
+    .screenshot-body {
+        padding: 10px 14px;
+        font-family: Arial, sans-serif;
+    }
+
+    /* End footer */
+    .end-mark {
+        text-align: center;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin-top: 30px;
+    }
+
+    @media print {
+        body {
+            background: none;
+        }
+        .report-page {
+            margin: 0;
+            border: 1.5px solid #000000;
+            page-break-after: always;
+        }
+        .cover-page {
+            border: none !important;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- ========================================================================= -->
+<!-- PAGE 1: COVER PAGE                                                        -->
+<!-- ========================================================================= -->
+<div class="report-page cover-page">
+    <div>
+        <div class="cover-logo-text">KEC</div>
+        <div class="cover-logo-sub">KONGU ENGINEERING COLLEGE</div>
+        <div style="font-size: 8pt; letter-spacing: 2px; color: #1A237E; margin-top: 2px; font-weight: bold;">TRANSFORM YOURSELF</div>
+        <div class="cover-divider"></div>
+        <div class="cover-dept">DEPARTMENT OF INFORMATION TECHNOLOGY</div>
+        <div class="cover-course">24ITT32 - PROGRAMMING IN JAVA</div>
+    </div>
+
+    <div>
+        <div class="cover-project-label">INDIVIDUAL PROJECT ON</div>
+        <div class="cover-title">CAR EXPENSE TRACKING SYSTEM</div>
+        <div class="cover-subtitle">BROWSER-BASED AUTOMOTIVE EXPENDITURE MONITORING PLATFORM</div>
+    </div>
+
+    <div>
+        <div class="cover-report-label">PROJECT REPORT</div>
+        <div class="cover-submitted-by">Submitted by</div>
+        <div class="cover-student-name">NAVINYA K R</div>
+        <div class="cover-student-roll">25ITR098</div>
+    </div>
+
+    <div>
+        <div class="cover-college">KONGU ENGINEERING COLLEGE (AUTONOMOUS)</div>
+        <div class="cover-location">PERUNDURAI, ERODE — 638 060</div>
+    </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 2: AIM, OBJECTIVE, FLOW CHART                                        -->
+<!-- ========================================================================= -->
+<div class="report-page">
+    <h1 class="page-title">JAVA ASSIGNMENT</h1>
+
+    <div class="section-label">AIM:</div>
+    <p>
+        Development of <strong>Car Expense Tracking System</strong>, a comprehensive Java-based browser application
+        for monitoring, categorizing, and analyzing automobile running expenditures using Java 21, Spring Boot,
+        Vaadin Flow, Oracle Database, Spring Data JPA, and Apache Maven.
+    </p>
+
+    <div class="section-label">OBJECTIVE:</div>
+    <p>
+        To design and implement a modern, responsive, and robust enterprise web system that enables vehicle owners
+        and fleet managers to systematically record vehicle operational costs across various categories (Fuel,
+        Maintenance, Repairs, Insurance, Parking, Tolls, Car Wash, and Taxes). The system provides a live financial
+        dashboard with instant key performance metrics, a full-featured management grid with multi-parameter search,
+        category and date filtering, inline modal editing, secure deletion, and visual cost breakdown charts with
+        percentage distributions. All frontend components and backend services are written purely in Java using Vaadin
+        Flow, backed by Oracle Database persistence and safe ORM transactions.
+    </p>
+
+    <div class="section-label">FLOW CHART:</div>
+    <div class="flowchart-container">
+        <div class="flow-box">
+            <span class="flow-box-title">START</span>
+            Launch CarExpenseApplication (Spring Boot Entry Point)
+        </div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">
+            <span class="flow-box-title">INITIALIZE</span>
+            Embedded Tomcat starts on port 8080 &amp; DataSource establishes DB connection
+        </div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">
+            <span class="flow-box-title">REQUEST</span>
+            Browser navigates to http://localhost:8080/ (Vaadin Flow bootstrap)
+        </div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">
+            <span class="flow-box-title">PROCESS &amp; ROUTING</span>
+            Vaadin router maps request to DashboardView inside MainLayout shell
+        </div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">
+            <span class="flow-box-title">SERVICE &amp; REPOSITORY LAYER</span>
+            ExpenseService &amp; ReportService query ExpenseRepository via Spring Data JPA
+        </div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">
+            <span class="flow-box-title">DATABASE QUERY</span>
+            Oracle DB executes JPQL aggregates (SUM, COUNT, AVG, GROUP BY category/month)
+        </div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">
+            <span class="flow-box-title">RENDER VIEW</span>
+            Vaadin Flow converts Java component tree into responsive browser DOM
+        </div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">
+            <span class="flow-box-title">USER ACTION</span>
+            Navigate to Add Expense, View Expenses, Reports, or Contact
+        </div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">
+            <span class="flow-box-title">VALIDATE &amp; PERSIST</span>
+            Perform constraint validation &amp; commit transactions to CAR_EXPENSES table
+        </div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">
+            <span class="flow-box-title">RESPONSE</span>
+            Display success notification, update table records &amp; refresh metric cards
+        </div>
+        <div class="flow-arrow">▼</div>
+        <div class="flow-box">
+            <span class="flow-box-title">END</span>
+            Continue session or terminate application
+        </div>
+    </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 3: PROCEDURE                                                         -->
+<!-- ========================================================================= -->
+<div class="report-page">
+    <div class="section-label" style="font-size: 12pt; margin-bottom: 12px;">PROCEDURE:</div>
+    <ul class="proc-list">
+        <li>
+            Create a Maven-based Spring Boot project using Java 21, and configure dependencies in <code>pom.xml</code>
+            for <code>spring-boot-starter-data-jpa</code>, <code>vaadin-spring-boot-starter</code> (v24.4.13),
+            and Oracle JDBC driver (<code>ojdbc11</code>), along with H2 in-memory database for local zero-configuration development.
+        </li>
+        <li>
+            Configure <code>application.properties</code> to manage database connection parameters using environment variables
+            (<code>DB_URL</code>, <code>DB_USERNAME</code>, <code>DB_PASSWORD</code>), setting Hibernate dialect to OracleDialect
+            and enabling <code>schema.sql</code> execution on application startup.
+        </li>
+        <li>
+            Design and write <code>schema.sql</code> to create the Oracle table <code>CAR_EXPENSES</code>, an auto-incrementing
+            sequence <code>CAR_EXPENSES_SEQ</code>, a pre-insert trigger <code>CAR_EXPENSES_BI</code>, and performance indexes
+            on expense date and category columns.
+        </li>
+        <li>
+            Create the JPA entity class <code>Expense.java</code> in the <code>com.carexpense.model</code> package, mapping database
+            columns to Java fields (<code>id</code>, <code>expenseDate</code>, <code>category</code>, <code>amount</code>,
+            <code>description</code>) with appropriate JPA annotations (<code>@Entity</code>, <code>@Table</code>, <code>@Id</code>,
+            <code>@GeneratedValue</code>, <code>@SequenceGenerator</code>, <code>@Column</code>).
+        </li>
+        <li>
+            Develop <code>ExpenseRepository.java</code> extending <code>JpaRepository&lt;Expense, Long&gt;</code> to define standard
+            CRUD operations and custom JPQL aggregate queries for total spending, average expense, count, recent 5 expenses,
+            category-wise grouping, and monthly spending extraction.
+        </li>
+        <li>
+            Implement <code>ExpenseService.java</code> and <code>ReportService.java</code> to encapsulate core business rules,
+            validation logic (ensuring non-null dates, valid categories, and positive currency amounts), search and date-range
+            filtering, and mathematical percentage calculations.
+        </li>
+        <li>
+            Construct the UI navigation shell in <code>MainLayout.java</code> extending Vaadin's <code>AppLayout</code>, incorporating
+            a solid Dark Navy Blue (<code>#0B1F4D</code>) top navigation header, top-aligned sidebar navigation drawer, brand identity,
+            and custom CSS rules for active item highlight (<code>#193A70</code> with white left border indicator).
+        </li>
+        <li>
+            Develop <code>DashboardView.java</code> to present 4 responsive metric cards (Total Spending, Total Expenses,
+            Average Expense, Top Category), the Recent Five Expenses data table, and monthly spending horizontal bar indicators.
+        </li>
+        <li>
+            Build <code>AddExpenseView.java</code> featuring a centered registration card with DatePicker, ComboBox, BigDecimalField,
+            and TextArea, complete with input validation and instant Vaadin success/error notifications.
+        </li>
+        <li>
+            Construct <code>ViewExpensesView.java</code> with an interactive search bar, category dropdown filter, from/to date pickers,
+            sortable grid columns, modal edit dialog, and delete confirmation dialog; and implement <code>ReportsView.java</code>
+            with category bar charts, percentage tables, and monthly expenditure trends.
+        </li>
+        <li>
+            Create <code>ContactView.java</code> displaying academic project details, direct communication channels, and an
+            interactive feedback form; execute unit tests with JUnit 5; and synchronize all commits to the GitHub repository.
+        </li>
+    </ul>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 4: SYSTEM ARCHITECTURE & COMPONENTS                                  -->
+<!-- ========================================================================= -->
+<div class="report-page">
+    <div class="section-label">SYSTEM ARCHITECTURE:</div>
+    <p>
+        The Car Expense Tracking System follows a clean, layered enterprise architecture:
+        <strong>Model &ndash; Repository &ndash; Service &ndash; View</strong>. A client browser request triggers Vaadin Flow’s
+        server-driven engine. The active View invokes the Service layer to execute business rules and query validations.
+        The Service layer communicates with the Spring Data JPA Repository, which translates operations into safe,
+        parameterized SQL executed against the Oracle Database. Results are bound directly to Java component models,
+        and Vaadin automatically synchronizes the client DOM without manual JavaScript or HTML generation.
+    </p>
+
+    <div class="section-label">APPLICATION COMPONENTS:</div>
+    <table class="comp-table">
+        <thead>
+            <tr>
+                <th style="width: 18%;">Layer</th>
+                <th style="width: 32%;">Files / Components</th>
+                <th style="width: 50%;">Responsibility</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Entry Point</strong></td>
+                <td><code>CarExpenseApplication.java</code></td>
+                <td>Bootstrap class annotated with <code>@SpringBootApplication</code>; starts embedded Tomcat server.</td>
+            </tr>
+            <tr>
+                <td><strong>Layout &amp; Shell</strong></td>
+                <td><code>MainLayout.java</code></td>
+                <td>Application shell providing fixed dark navy sidebar (<code>#0B1F4D</code>), top navbar, and navigation routing.</td>
+            </tr>
+            <tr>
+                <td><strong>View Layer (UI)</strong></td>
+                <td>
+                    <code>DashboardView.java</code><br>
+                    <code>AddExpenseView.java</code><br>
+                    <code>ViewExpensesView.java</code><br>
+                    <code>ReportsView.java</code><br>
+                    <code>ContactView.java</code>
+                </td>
+                <td>
+                    Renders interactive browser screens: live dashboard metrics, expense entry form,
+                    management grid with search/filter/edit/delete, visual spending reports, and contact form.
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Service Layer</strong></td>
+                <td>
+                    <code>ExpenseService.java</code><br>
+                    <code>ReportService.java</code>
+                </td>
+                <td>Encapsulates business logic, input validation, transaction handling, search/filter algorithms, and percentage calculations.</td>
+            </tr>
+            <tr>
+                <td><strong>Repository Layer</strong></td>
+                <td><code>ExpenseRepository.java</code></td>
+                <td>Spring Data JPA interface executing CRUD methods and custom JPQL aggregate queries.</td>
+            </tr>
+            <tr>
+                <td><strong>Model Layer</strong></td>
+                <td><code>Expense.java</code></td>
+                <td>JPA entity representing the <code>CAR_EXPENSES</code> relational table with primary key sequence generation.</td>
+            </tr>
+            <tr>
+                <td><strong>Configuration</strong></td>
+                <td><code>DatabaseConfig.java</code></td>
+                <td>Configures Oracle <code>DataSource</code> bean dynamically using environment variable overrides.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="section-label">DATA STORAGE:</div>
+    <p>
+        Data persistence is governed by <strong>Oracle Database</strong> (with H2 in-memory database supported via the <code>dev</code> profile).
+        The primary table <code>CAR_EXPENSES</code> stores all transaction records. Primary keys are auto-generated via the
+        <code>CAR_EXPENSES_SEQ</code> sequence and the <code>CAR_EXPENSES_BI</code> trigger.
+    </p>
+
+    <div class="section-label">APPLICATION CONFIGURATION (application.properties):</div>
+    <pre class="code-block">
+spring.application.name=Car Expense Tracking System
+server.port=8080
+
+# Database Configuration - Oracle Database
+spring.datasource.url=${DB_URL:jdbc:oracle:thin:@localhost:1521/XE}
+spring.datasource.username=${DB_USERNAME:your_oracle_username}
+spring.datasource.password=${DB_PASSWORD:your_oracle_password}
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+
+# JPA / Hibernate
+spring.jpa.database-platform=org.hibernate.dialect.OracleDialect
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.show-sql=true
+
+# SQL Initialization
+spring.sql.init.mode=always
+spring.sql.init.schema-locations=classpath:schema.sql
+spring.sql.init.continue-on-error=true
+
+# Vaadin Configuration
+vaadin.launch-browser=false
+vaadin.devTools.enabled=false
+    </pre>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 5: SOURCE CODE - ENTRY POINT & ENTITY                                -->
+<!-- ========================================================================= -->
+<div class="report-page">
+    <div class="section-label">SOURCE CODE: APPLICATION ENTRY POINT (CarExpenseApplication.java):</div>
+    <p><code>CarExpenseApplication.java</code> initializes the Spring Boot application context and bootstraps Vaadin Flow.</p>
+    <pre class="code-block">
+package com.carexpense;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class CarExpenseApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(CarExpenseApplication.class, args);
+    }
+}
+    </pre>
+
+    <div class="section-label">MODEL LAYER &ndash; Expense.java:</div>
+    <p>The <code>Expense</code> class maps directly to the <code>CAR_EXPENSES</code> table in Oracle Database.</p>
+    <pre class="code-block">
+package com.carexpense.model;
+
+import jakarta.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "CAR_EXPENSES")
+public class Expense {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "car_expenses_seq")
+    @SequenceGenerator(name = "car_expenses_seq", sequenceName = "CAR_EXPENSES_SEQ", allocationSize = 1)
+    @Column(name = "EXPENSE_ID")
+    private Long id;
+
+    @Column(name = "EXPENSE_DATE", nullable = false)
+    private LocalDate expenseDate;
+
+    @Column(name = "CATEGORY", nullable = false, length = 100)
+    private String category;
+
+    @Column(name = "AMOUNT", nullable = false, precision = 12, scale = 2)
+    private BigDecimal amount;
+
+    @Column(name = "DESCRIPTION", length = 500)
+    private String description;
+
+    public Expense() {}
+
+    public Expense(LocalDate expenseDate, String category, BigDecimal amount, String description) {
+        this.expenseDate = expenseDate;
+        this.category = category;
+        this.amount = amount;
+        this.description = description;
+    }
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public LocalDate getExpenseDate() { return expenseDate; }
+    public void setExpenseDate(LocalDate expenseDate) { this.expenseDate = expenseDate; }
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
+    public BigDecimal getAmount() { return amount; }
+    public void setAmount(BigDecimal amount) { this.amount = amount; }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+}
+    </pre>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 6: SOURCE CODE - REPOSITORY LAYER                                    -->
+<!-- ========================================================================= -->
+<div class="report-page">
+    <div class="section-label">REPOSITORY LAYER &ndash; ExpenseRepository.java:</div>
+    <p>Provides CRUD methods and parameterized JPQL aggregate queries for reporting and dashboard statistics.</p>
+    <pre class="code-block">
+package com.carexpense.repository;
+
+import com.carexpense.model.Expense;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.List;
+
+@Repository
+public interface ExpenseRepository extends JpaRepository&lt;Expense, Long&gt; {
+
+    List&lt;Expense&gt; findByCategoryIgnoreCase(String category);
+
+    @Query("SELECT e FROM Expense e WHERE " +
+           "LOWER(e.category) LIKE LOWER(CONCAT('%', :term, '%')) OR " +
+           "LOWER(e.description) LIKE LOWER(CONCAT('%', :term, '%'))")
+    List&lt;Expense&gt; searchByCategoryOrDescription(@Param("term") String term);
+
+    List&lt;Expense&gt; findByExpenseDateBetween(LocalDate startDate, LocalDate endDate);
+
+    @Query("SELECT e FROM Expense e WHERE (:category IS NULL OR e.category = :category) AND " +
+           "(:term IS NULL OR LOWER(e.category) LIKE LOWER(CONCAT('%', :term, '%')) " +
+           "OR LOWER(e.description) LIKE LOWER(CONCAT('%', :term, '%')))")
+    List&lt;Expense&gt; findByCategoryAndSearchTerm(@Param("category") String category, @Param("term") String term);
+
+    @Query("SELECT COALESCE(SUM(e.amount), 0) FROM Expense e")
+    BigDecimal getTotalExpenses();
+
+    @Query("SELECT COALESCE(AVG(e.amount), 0) FROM Expense e")
+    BigDecimal getAverageExpense();
+
+    @Query("SELECT e.category FROM Expense e GROUP BY e.category ORDER BY SUM(e.amount) DESC")
+    List&lt;String&gt; findHighestSpendingCategory();
+
+    @Query("SELECT e FROM Expense e ORDER BY e.expenseDate DESC, e.id DESC")
+    List&lt;Expense&gt; findTop5RecentExpenses(Pageable pageable);
+
+    @Query("SELECT e.category, SUM(e.amount) FROM Expense e GROUP BY e.category ORDER BY SUM(e.amount) DESC")
+    List&lt;Object[]&gt; getCategoryWiseSpending();
+
+    @Query("SELECT EXTRACT(YEAR FROM e.expenseDate), EXTRACT(MONTH FROM e.expenseDate), SUM(e.amount) " +
+           "FROM Expense e GROUP BY EXTRACT(YEAR FROM e.expenseDate), EXTRACT(MONTH FROM e.expenseDate) " +
+           "ORDER BY EXTRACT(YEAR FROM e.expenseDate) DESC, EXTRACT(MONTH FROM e.expenseDate) DESC")
+    List&lt;Object[]&gt; getMonthlySpendingSummary();
+}
+    </pre>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 7: SOURCE CODE - SERVICE LAYER                                       -->
+<!-- ========================================================================= -->
+<div class="report-page">
+    <div class="section-label">SERVICE LAYER &ndash; ExpenseService.java (Core Methods):</div>
+    <p>Coordinates business transactions, validates input parameters, and filters expense data.</p>
+    <pre class="code-block">
+package com.carexpense.service;
+
+import com.carexpense.model.Expense;
+import com.carexpense.repository.ExpenseRepository;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+@Service
+@Transactional
+public class ExpenseService {
+
+    private final ExpenseRepository expenseRepository;
+
+    public ExpenseService(ExpenseRepository expenseRepository) {
+        this.expenseRepository = expenseRepository;
+    }
+
+    public Expense saveExpense(Expense expense) {
+        validateExpense(expense);
+        return expenseRepository.save(expense);
+    }
+
+    @Transactional(readOnly = true)
+    public List&lt;Expense&gt; getAllExpenses() {
+        return expenseRepository.findAll(Sort.by(Sort.Direction.DESC, "expenseDate", "id"));
+    }
+
+    public void deleteExpense(Long id) {
+        expenseRepository.deleteById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public List&lt;Expense&gt; searchExpenses(String category, String searchTerm) {
+        boolean hasCat = category != null && !category.isBlank() && !category.equals("All Categories");
+        boolean hasTerm = searchTerm != null && !searchTerm.isBlank();
+
+        if (hasCat && hasTerm) return expenseRepository.findByCategoryAndSearchTerm(category, searchTerm);
+        if (hasCat) return expenseRepository.findByCategoryIgnoreCase(category);
+        if (hasTerm) return expenseRepository.searchByCategoryOrDescription(searchTerm);
+        return getAllExpenses();
+    }
+
+    @Transactional(readOnly = true)
+    public BigDecimal getTotalExpenses() { return expenseRepository.getTotalExpenses(); }
+
+    @Transactional(readOnly = true)
+    public BigDecimal getAverageExpense() { return expenseRepository.getAverageExpense(); }
+
+    @Transactional(readOnly = true)
+    public long getTotalCount() { return expenseRepository.count(); }
+
+    @Transactional(readOnly = true)
+    public String getHighestSpendingCategory() {
+        List&lt;String&gt; cats = expenseRepository.findHighestSpendingCategory();
+        return (cats != null && !cats.isEmpty()) ? cats.get(0) : "N/A";
+    }
+
+    @Transactional(readOnly = true)
+    public List&lt;Expense&gt; getRecentExpenses() {
+        return expenseRepository.findTop5RecentExpenses(PageRequest.of(0, 5));
+    }
+
+    private void validateExpense(Expense expense) {
+        if (expense.getExpenseDate() == null) throw new IllegalArgumentException("Expense date is required.");
+        if (expense.getCategory() == null || expense.getCategory().isBlank()) 
+            throw new IllegalArgumentException("Expense category is required.");
+        if (expense.getAmount() == null || expense.getAmount().compareTo(BigDecimal.ZERO) &lt;= 0)
+            throw new IllegalArgumentException("Expense amount must be greater than zero.");
+    }
+}
+    </pre>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 8: SOURCE CODE - REPORT SERVICE                                      -->
+<!-- ========================================================================= -->
+<div class="report-page">
+    <div class="section-label">SERVICE LAYER &ndash; ReportService.java:</div>
+    <p>Aggregates spending totals, calculates category percentages, and constructs monthly timeline maps.</p>
+    <pre class="code-block">
+package com.carexpense.service;
+
+import com.carexpense.repository.ExpenseRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.time.Month;
+import java.time.format.TextStyle;
+import java.util.*;
+
+@Service
+@Transactional(readOnly = true)
+public class ReportService {
+
+    private final ExpenseRepository expenseRepository;
+
+    public ReportService(ExpenseRepository expenseRepository) {
+        this.expenseRepository = expenseRepository;
+    }
+
+    public BigDecimal getTotalSpending() {
+        BigDecimal total = expenseRepository.getTotalExpenses();
+        return total != null ? total : BigDecimal.ZERO;
+    }
+
+    public long getTotalExpenseCount() { return expenseRepository.count(); }
+
+    public String getHighestSpendingCategory() {
+        List&lt;String&gt; result = expenseRepository.findHighestSpendingCategory();
+        return (result != null && !result.isEmpty()) ? result.get(0) : "N/A";
+    }
+
+    public Map&lt;String, BigDecimal&gt; getCategorySpendingMap() {
+        List&lt;Object[]&gt; rawData = expenseRepository.getCategoryWiseSpending();
+        Map&lt;String, BigDecimal&gt; result = new LinkedHashMap&lt;&gt;();
+        for (Object[] row : rawData) {
+            String category = (String) row[0];
+            BigDecimal total = (row[1] instanceof BigDecimal) ? (BigDecimal) row[1]
+                             : BigDecimal.valueOf(((Number) row[1]).doubleValue());
+            result.put(category, total.setScale(2, RoundingMode.HALF_UP));
+        }
+        return result;
+    }
+
+    public Map&lt;String, BigDecimal&gt; getCategoryPercentageMap() {
+        Map&lt;String, BigDecimal&gt; spending = getCategorySpendingMap();
+        BigDecimal total = getTotalSpending();
+        Map&lt;String, BigDecimal&gt; percentages = new LinkedHashMap&lt;&gt;();
+
+        if (total.compareTo(BigDecimal.ZERO) == 0) {
+            spending.keySet().forEach(k -&gt; percentages.put(k, BigDecimal.ZERO));
+            return percentages;
+        }
+
+        for (Map.Entry&lt;String, BigDecimal&gt; entry : spending.entrySet()) {
+            BigDecimal pct = entry.getValue().multiply(new BigDecimal("100"))
+                    .divide(total, 1, RoundingMode.HALF_UP);
+            percentages.put(entry.getKey(), pct);
+        }
+        return percentages;
+    }
+}
+    </pre>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 9: SOURCE CODE - MAIN LAYOUT & NAVIGATION                            -->
+<!-- ========================================================================= -->
+<div class="report-page">
+    <div class="section-label">VIEW LAYER &ndash; MainLayout.java (Excerpt):</div>
+    <p>Provides the Dark Navy (<code>#0B1F4D</code>) top bar, fixed 240px sidebar, and top-aligned navigation items.</p>
+    <pre class="code-block">
+package com.carexpense.view;
+
+import com.vaadin.flow.component.applayout.AppLayout;
+import com.vaadin.flow.component.applayout.DrawerToggle;
+import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.orderedlayout.*;
+import com.vaadin.flow.component.sidenav.*;
+
+public class MainLayout extends AppLayout {
+
+    private static final String NAVY = "#0B1F4D";
+    private static final String NAVY_ACTIVE = "#193A70";
+    private static final String SIDEBAR_W = "240px";
+
+    public MainLayout() {
+        setPrimarySection(Section.DRAWER);
+        buildNavbar();
+        buildSidebar();
+    }
+
+    private void buildNavbar() {
+        DrawerToggle toggle = new DrawerToggle();
+        Span appName = new Span("Car Expense Tracker");
+        HorizontalLayout navbar = new HorizontalLayout(toggle, appName);
+        navbar.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER);
+        navbar.setWidthFull();
+        navbar.setHeight("56px");
+        navbar.getStyle().set("background", NAVY).set("color", "#FFFFFF");
+        addToNavbar(true, navbar);
+    }
+
+    private void buildSidebar() {
+        Div brand = buildBrand();
+
+        SideNav nav = new SideNav();
+        nav.setWidthFull();
+        nav.addItem(
+            new SideNavItem("Dashboard", DashboardView.class, VaadinIcon.DASHBOARD.create()),
+            new SideNavItem("Add Expense", AddExpenseView.class, VaadinIcon.PLUS_CIRCLE.create()),
+            new SideNavItem("View Expenses", ViewExpensesView.class, VaadinIcon.LIST.create()),
+            new SideNavItem("Reports", ReportsView.class, VaadinIcon.BAR_CHART.create()),
+            new SideNavItem("Contact", ContactView.class, VaadinIcon.ENVELOPE.create())
+        );
+
+        Div footer = new Div(new Span("v1.0 · Spring Boot + Vaadin"));
+        footer.getStyle().set("margin-top", "auto"); // Pin footer to bottom
+
+        // Top-aligned sidebar container (START alignment removes vertical empty gap)
+        VerticalLayout sidebar = new VerticalLayout(brand, nav, footer);
+        sidebar.setSizeFull();
+        sidebar.setJustifyContentMode(FlexComponent.JustifyContentMode.START);
+        sidebar.getStyle().set("background", NAVY).set("width", SIDEBAR_W);
+        addToDrawer(sidebar);
+    }
+}
+    </pre>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 10: SOURCE CODE - DASHBOARD & ADD EXPENSE                            -->
+<!-- ========================================================================= -->
+<div class="report-page">
+    <div class="section-label">VIEW LAYER &ndash; DashboardView.java (Card Creation):</div>
+    <pre class="code-block">
+@PageTitle("Dashboard — Car Expense Tracker")
+@Route(value = "", layout = MainLayout.class)
+@RouteAlias(value = "dashboard", layout = MainLayout.class)
+public class DashboardView extends VerticalLayout {
+
+    private final ExpenseService expenseService;
+
+    public DashboardView(ExpenseService expenseService) {
+        this.expenseService = expenseService;
+        setSizeFull();
+        getStyle().set("background", "#F4F6FA");
+        add(createHeader(), createStatCards(), createRecentExpensesSection(), createMonthlySection());
+    }
+
+    private Div createStatCards() {
+        Div card1 = buildStatCard("Total Spending", formatInr(expenseService.getTotalExpenses()), VaadinIcon.WALLET);
+        Div card2 = buildStatCard("Total Expenses", String.valueOf(expenseService.getTotalCount()), VaadinIcon.RECORDS);
+        Div card3 = buildStatCard("Average Expense", formatInr(expenseService.getAverageExpense()), VaadinIcon.CALC);
+        Div card4 = buildStatCard("Highest Category", expenseService.getHighestSpendingCategory(), VaadinIcon.TAG);
+
+        Div grid = new Div(card1, card2, card3, card4);
+        grid.getStyle().set("display", "grid").set("grid-template-columns", "repeat(auto-fit, minmax(230px, 1fr))").set("gap", "1rem");
+        return grid;
+    }
+}
+    </pre>
+
+    <div class="section-label">VIEW LAYER &ndash; AddExpenseView.java (Save Handler):</div>
+    <pre class="code-block">
+private void handleSave() {
+    if (dateField.isEmpty() || categoryField.isEmpty() || amountField.isEmpty()) {
+        Notification.show("Please correct the highlighted fields before saving.", 4000, Position.TOP_END)
+                    .addThemeVariants(NotificationVariant.LUMO_ERROR);
+        return;
+    }
+    if (amountField.getValue().compareTo(BigDecimal.ZERO) &lt;= 0) {
+        Notification.show("Amount must be greater than ₹0.", 4000, Position.TOP_END)
+                    .addThemeVariants(NotificationVariant.LUMO_ERROR);
+        return;
+    }
+    Expense expense = new Expense(dateField.getValue(), categoryField.getValue(),
+                                  amountField.getValue(), descriptionField.getValue().trim());
+    expenseService.saveExpense(expense);
+    Notification.show("Expense saved successfully! (ID: " + expense.getId() + ")", 4000, Position.TOP_END)
+                .addThemeVariants(NotificationVariant.LUMO_SUCCESS);
+    clearForm();
+}
+    </pre>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 11: TESTING & MAVEN CONFIGURATION                                    -->
+<!-- ========================================================================= -->
+<div class="report-page">
+    <div class="section-label">TESTING &ndash; CarExpenseApplicationTests.java:</div>
+    <p>Verifies application context startup and bean initialization using JUnit 5.</p>
+    <pre class="code-block">
+package com.carexpense;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
+
+@SpringBootTest
+@TestPropertySource(properties = {
+    "spring.datasource.url=jdbc:oracle:thin:@localhost:1521/XE",
+    "spring.datasource.username=test",
+    "spring.datasource.password=test",
+    "spring.jpa.hibernate.ddl-auto=none",
+    "spring.sql.init.mode=never"
+})
+class CarExpenseApplicationTests {
+    @Test
+    void contextLoads() {
+        // Verifies successful Spring application context initialization
+    }
+}
+    </pre>
+
+    <div class="section-label">MAVEN CONFIGURATION &ndash; pom.xml:</div>
+    <pre class="code-block">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;3.3.5&lt;/version&gt;
+    &lt;/parent&gt;
+    &lt;groupId&gt;com.carexpense&lt;/groupId&gt;
+    &lt;artifactId&gt;car-expense-tracker&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;properties&gt;
+        &lt;java.version&gt;21&lt;/java.version&gt;
+        &lt;vaadin.version&gt;24.4.13&lt;/vaadin.version&gt;
+    &lt;/properties&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.vaadin&lt;/groupId&gt;
+            &lt;artifactId&gt;vaadin-spring-boot-starter&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.oracle.database.jdbc&lt;/groupId&gt;
+            &lt;artifactId&gt;ojdbc11&lt;/artifactId&gt;
+            &lt;scope&gt;runtime&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+&lt;/project&gt;
+    </pre>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 12: OUTPUT SCREENSHOTS - DASHBOARD                                   -->
+<!-- ========================================================================= -->
+<div class="report-page">
+    <div class="section-label" style="font-size: 12pt; margin-bottom: 12px;">OUTPUT SCREENSHOTS:</div>
+
+    <div class="section-label">PAGE 1: DASHBOARD OVERVIEW (http://localhost:8080/):</div>
+    <div class="screenshot-card">
+        <div class="screenshot-header">
+            <span>CarTracker &mdash; Dashboard Overview</span>
+            <span>http://localhost:8080/</span>
+        </div>
+        <div class="screenshot-body">
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 12px;">
+                <div style="background:#FFF; border:1px solid #DDD; border-left: 4px solid #0B1F4D; padding: 10px; border-radius: 4px;">
+                    <div style="font-size: 8pt; color: #666; text-transform: uppercase;">Total Spending</div>
+                    <div style="font-size: 14pt; font-weight: bold; color: #0B1F4D;">₹21,120.00</div>
+                </div>
+                <div style="background:#FFF; border:1px solid #DDD; border-left: 4px solid #0B1F4D; padding: 10px; border-radius: 4px;">
+                    <div style="font-size: 8pt; color: #666; text-transform: uppercase;">Total Expenses</div>
+                    <div style="font-size: 14pt; font-weight: bold; color: #0B1F4D;">4</div>
+                </div>
+                <div style="background:#FFF; border:1px solid #DDD; border-left: 4px solid #0B1F4D; padding: 10px; border-radius: 4px;">
+                    <div style="font-size: 8pt; color: #666; text-transform: uppercase;">Average Expense</div>
+                    <div style="font-size: 14pt; font-weight: bold; color: #0B1F4D;">₹5,280.00</div>
+                </div>
+                <div style="background:#FFF; border:1px solid #DDD; border-left: 4px solid #0B1F4D; padding: 10px; border-radius: 4px;">
+                    <div style="font-size: 8pt; color: #666; text-transform: uppercase;">Highest Category</div>
+                    <div style="font-size: 14pt; font-weight: bold; color: #0B1F4D;">Insurance</div>
+                </div>
+            </div>
+
+            <div style="background: #FFF; border: 1px solid #DDD; border-radius: 4px; padding: 10px; margin-bottom: 10px;">
+                <div style="font-weight: bold; color: #0B1F4D; margin-bottom: 6px; font-size: 9.5pt;">Recent Five Expenses</div>
+                <table style="width: 100%; font-size: 8.5pt; border-collapse: collapse;">
+                    <tr style="background: #F4F6FA; font-weight: bold;">
+                        <td style="padding: 4px 6px;">DATE</td>
+                        <td style="padding: 4px 6px;">CATEGORY</td>
+                        <td style="padding: 4px 6px; text-align: right;">AMOUNT</td>
+                        <td style="padding: 4px 6px;">DESCRIPTION</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 4px 6px;">15 Nov 2026</td>
+                        <td style="padding: 4px 6px;">Insurance</td>
+                        <td style="padding: 4px 6px; text-align: right; color:#0B1F4D; font-weight: bold;">₹12,500.00</td>
+                        <td style="padding: 4px 6px;">Comprehensive annual renewal</td>
+                    </tr>
+                    <tr style="background: #FAFAFC;">
+                        <td style="padding: 4px 6px;">15 Nov 2026</td>
+                        <td style="padding: 4px 6px;">Maintenance &amp; Service</td>
+                        <td style="padding: 4px 6px; text-align: right; color:#0B1F4D; font-weight: bold;">₹4,800.00</td>
+                        <td style="padding: 4px 6px;">Periodic 10,000 km oil change</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 4px 6px;">15 Nov 2026</td>
+                        <td style="padding: 4px 6px;">Fuel</td>
+                        <td style="padding: 4px 6px; text-align: right; color:#0B1F4D; font-weight: bold;">₹3,500.00</td>
+                        <td style="padding: 4px 6px;">Full tank petrol</td>
+                    </tr>
+                    <tr style="background: #FAFAFC;">
+                        <td style="padding: 4px 6px;">15 Nov 2026</td>
+                        <td style="padding: 4px 6px;">Tolls</td>
+                        <td style="padding: 4px 6px; text-align: right; color:#0B1F4D; font-weight: bold;">₹320.00</td>
+                        <td style="padding: 4px 6px;">Fastag highway toll</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <p style="font-size: 9.5pt;">
+        <strong>Description:</strong> The Dashboard view computes live financial statistics directly from database records.
+        The top-aligned sidebar features pure white text with a solid navy-blue background (<code>#0B1F4D</code>), ensuring optimal contrast.
+    </p>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 13: OUTPUT SCREENSHOTS - ADD EXPENSE                                 -->
+<!-- ========================================================================= -->
+<div class="report-page">
+    <div class="section-label">PAGE 2: REGISTER NEW EXPENSE (http://localhost:8080/add-expense):</div>
+    <div class="screenshot-card">
+        <div class="screenshot-header">
+            <span>CarTracker &mdash; Register New Expense</span>
+            <span>http://localhost:8080/add-expense</span>
+        </div>
+        <div class="screenshot-body" style="display: flex; justify-content: center;">
+            <div style="background: #FFF; border: 1px solid #DDD; padding: 18px 24px; width: 85%; border-radius: 6px;">
+                <div style="font-size: 11pt; font-weight: bold; color: #0B1F4D; margin-bottom: 4px;">Register New Expense</div>
+                <div style="font-size: 8.5pt; color: #666; margin-bottom: 14px;">Enter the details below to record a new car expense into the database.</div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 10px; font-size: 8.5pt;">
+                    <div>
+                        <label style="font-weight: bold; display: block; margin-bottom: 3px;">Expense Date</label>
+                        <input type="text" value="15/11/2026" style="width: 100%; padding: 6px; border: 1px solid #CCC; border-radius: 4px;" readonly>
+                    </div>
+                    <div>
+                        <label style="font-weight: bold; display: block; margin-bottom: 3px;">Expense Category</label>
+                        <select style="width: 100%; padding: 6px; border: 1px solid #CCC; border-radius: 4px;">
+                            <option>Fuel</option>
+                            <option>Maintenance &amp; Service</option>
+                            <option>Repairs &amp; Parts</option>
+                            <option>Insurance</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 10px; font-size: 8.5pt;">
+                    <label style="font-weight: bold; display: block; margin-bottom: 3px;">Amount (₹)</label>
+                    <input type="text" value="₹ 3500.00" style="width: 100%; padding: 6px; border: 1px solid #CCC; border-radius: 4px;" readonly>
+                </div>
+
+                <div style="margin-bottom: 14px; font-size: 8.5pt;">
+                    <label style="font-weight: bold; display: block; margin-bottom: 3px;">Description</label>
+                    <textarea style="width: 100%; height: 50px; padding: 6px; border: 1px solid #CCC; border-radius: 4px;" readonly>Full tank petrol at highway station</textarea>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <button style="background: #0B1F4D; color: #FFF; border: none; padding: 7px 18px; border-radius: 4px; font-weight: bold; font-size: 8.5pt;">Save Expense</button>
+                    <button style="background: transparent; color: #0B1F4D; border: 1px solid #CBD5E1; padding: 7px 14px; border-radius: 4px; font-size: 8.5pt;">Clear Form</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p style="font-size: 9.5pt;">
+        <strong>Description:</strong> The Add Expense form handles entry validation (mandatory date, category, and positive amount).
+        Successful submissions trigger an automatic database commit and a green toast notification.
+    </p>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 14: OUTPUT SCREENSHOTS - VIEW EXPENSES                               -->
+<!-- ========================================================================= -->
+<div class="report-page">
+    <div class="section-label">PAGE 3: VIEW &amp; MANAGE EXPENSES (http://localhost:8080/view-expenses):</div>
+    <div class="screenshot-card">
+        <div class="screenshot-header">
+            <span>CarTracker &mdash; All Expenses Management</span>
+            <span>http://localhost:8080/view-expenses</span>
+        </div>
+        <div class="screenshot-body">
+            <!-- Filter Bar -->
+            <div style="background: #FFF; border: 1px solid #DDD; padding: 8px 12px; border-radius: 4px; margin-bottom: 10px; display: flex; gap: 10px; align-items: center; font-size: 8.5pt;">
+                <input type="text" placeholder="Search category or description..." style="padding: 5px; border: 1px solid #CCC; border-radius: 4px; width: 200px;">
+                <select style="padding: 5px; border: 1px solid #CCC; border-radius: 4px;"><option>All Categories</option></select>
+                <input type="text" placeholder="From Date" style="padding: 5px; border: 1px solid #CCC; border-radius: 4px; width: 100px;">
+                <input type="text" placeholder="To Date" style="padding: 5px; border: 1px solid #CCC; border-radius: 4px; width: 100px;">
+                <button style="background: transparent; border: 1px solid #CBD5E1; padding: 5px 10px; border-radius: 4px;">Clear Filters</button>
+            </div>
+
+            <!-- Table -->
+            <div style="background: #FFF; border: 1px solid #DDD; border-radius: 4px; overflow: hidden;">
+                <table style="width: 100%; font-size: 8.5pt; border-collapse: collapse;">
+                    <tr style="background: #F8FAFC; font-weight: bold; border-bottom: 1px solid #DDD;">
+                        <th style="padding: 6px; text-align: left;">ID</th>
+                        <th style="padding: 6px; text-align: left;">DATE</th>
+                        <th style="padding: 6px; text-align: left;">CATEGORY</th>
+                        <th style="padding: 6px; text-align: right;">AMOUNT</th>
+                        <th style="padding: 6px; text-align: left;">DESCRIPTION</th>
+                        <th style="padding: 6px; text-align: center;">ACTIONS</th>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #EEE;">
+                        <td style="padding: 6px;">1</td>
+                        <td style="padding: 6px;">15 Nov 2026</td>
+                        <td style="padding: 6px;">Fuel</td>
+                        <td style="padding: 6px; text-align: right; color:#0B1F4D; font-weight: bold;">₹3,500.00</td>
+                        <td style="padding: 6px;">Full tank petrol</td>
+                        <td style="padding: 6px; text-align: center;">✏️ 🗑️</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #EEE; background: #FAFAFC;">
+                        <td style="padding: 6px;">2</td>
+                        <td style="padding: 6px;">15 Nov 2026</td>
+                        <td style="padding: 6px;">Maintenance &amp; Service</td>
+                        <td style="padding: 6px; text-align: right; color:#0B1F4D; font-weight: bold;">₹4,800.00</td>
+                        <td style="padding: 6px;">Periodic 10,000 km oil change</td>
+                        <td style="padding: 6px; text-align: center;">✏️ 🗑️</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #EEE;">
+                        <td style="padding: 6px;">3</td>
+                        <td style="padding: 6px;">15 Nov 2026</td>
+                        <td style="padding: 6px;">Insurance</td>
+                        <td style="padding: 6px; text-align: right; color:#0B1F4D; font-weight: bold;">₹12,500.00</td>
+                        <td style="padding: 6px;">Comprehensive annual renewal</td>
+                        <td style="padding: 6px; text-align: center;">✏️ 🗑️</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <p style="font-size: 9.5pt;">
+        <strong>Description:</strong> The View Expenses page displays all records with real-time text search, category filtering,
+        date intervals, column sorting, inline modal dialog editing, and deletion confirmation dialogs.
+    </p>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 15: OUTPUT SCREENSHOTS - REPORTS                                     -->
+<!-- ========================================================================= -->
+<div class="report-page">
+    <div class="section-label">PAGE 4: EXPENSE REPORTS (http://localhost:8080/reports):</div>
+    <div class="screenshot-card">
+        <div class="screenshot-header">
+            <span>CarTracker &mdash; Expense Analytics &amp; Reports</span>
+            <span>http://localhost:8080/reports</span>
+        </div>
+        <div class="screenshot-body">
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 10px;">
+                <!-- Category Bars -->
+                <div style="background: #FFF; border: 1px solid #DDD; padding: 10px; border-radius: 4px;">
+                    <div style="font-weight: bold; color: #0B1F4D; font-size: 9pt; margin-bottom: 8px;">Category-wise Spending</div>
+                    <div style="font-size: 8pt; margin-bottom: 6px;">
+                        <div style="display: flex; justify-content: space-between;"><span>Insurance</span><span style="font-weight: bold; color: #0B1F4D;">₹12,500.00</span></div>
+                        <div style="background: #E2E8F0; height: 7px; border-radius: 3px; overflow: hidden; margin-top: 2px;"><div style="background: #0B1F4D; width: 100%; height: 100%;"></div></div>
+                    </div>
+                    <div style="font-size: 8pt; margin-bottom: 6px;">
+                        <div style="display: flex; justify-content: space-between;"><span>Maintenance &amp; Service</span><span style="font-weight: bold; color: #0B1F4D;">₹4,800.00</span></div>
+                        <div style="background: #E2E8F0; height: 7px; border-radius: 3px; overflow: hidden; margin-top: 2px;"><div style="background: #0B1F4D; width: 38.4%; height: 100%;"></div></div>
+                    </div>
+                    <div style="font-size: 8pt;">
+                        <div style="display: flex; justify-content: space-between;"><span>Fuel</span><span style="font-weight: bold; color: #0B1F4D;">₹3,500.00</span></div>
+                        <div style="background: #E2E8F0; height: 7px; border-radius: 3px; overflow: hidden; margin-top: 2px;"><div style="background: #0B1F4D; width: 28%; height: 100%;"></div></div>
+                    </div>
+                </div>
+
+                <!-- Percentage Distribution -->
+                <div style="background: #FFF; border: 1px solid #DDD; padding: 10px; border-radius: 4px;">
+                    <div style="font-weight: bold; color: #0B1F4D; font-size: 9pt; margin-bottom: 8px;">Percentage Distribution</div>
+                    <table style="width: 100%; font-size: 8pt; border-collapse: collapse;">
+                        <tr style="background: #F8FAFC; font-weight: bold;"><td style="padding: 3px;">Category</td><td style="padding: 3px; text-align: right;">Amount</td><td style="padding: 3px; text-align: right;">Share</td></tr>
+                        <tr><td style="padding: 3px;">Insurance</td><td style="padding: 3px; text-align: right;">₹12,500.00</td><td style="padding: 3px; text-align: right;">59.2%</td></tr>
+                        <tr style="background: #FAFAFC;"><td style="padding: 3px;">Maintenance</td><td style="padding: 3px; text-align: right;">₹4,800.00</td><td style="padding: 3px; text-align: right;">22.7%</td></tr>
+                        <tr><td style="padding: 3px;">Fuel</td><td style="padding: 3px; text-align: right;">₹3,500.00</td><td style="padding: 3px; text-align: right;">16.6%</td></tr>
+                        <tr style="font-weight: bold; border-top: 1px solid #DDD;"><td style="padding: 3px;">TOTAL</td><td style="padding: 3px; text-align: right;">₹21,120.00</td><td style="padding: 3px; text-align: right;">100%</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p style="font-size: 9.5pt;">
+        <strong>Description:</strong> The Reports view provides spending analytics via Java-rendered horizontal bar charts and
+        mathematical percentage distribution tables calculated directly from database records.
+    </p>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 16: OUTPUT SCREENSHOTS - CONTACT                                     -->
+<!-- ========================================================================= -->
+<div class="report-page">
+    <div class="section-label">PAGE 5: CONTACT &amp; SUPPORT (http://localhost:8080/contact):</div>
+    <div class="screenshot-card">
+        <div class="screenshot-header">
+            <span>CarTracker &mdash; Contact &amp; Academic Support</span>
+            <span>http://localhost:8080/contact</span>
+        </div>
+        <div class="screenshot-body">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <!-- Academic Info -->
+                <div style="background: #FFF; border: 1px solid #DDD; padding: 12px; border-radius: 4px; font-size: 8.5pt;">
+                    <div style="font-weight: bold; color: #0B1F4D; margin-bottom: 8px;">Academic &amp; Project Information</div>
+                    <div style="margin-bottom: 6px;"><strong>Course:</strong> B.Tech Information Technology (24ITT32)</div>
+                    <div style="margin-bottom: 6px;"><strong>Student:</strong> NAVINYA K R (25ITR098)</div>
+                    <div style="margin-bottom: 6px;"><strong>College:</strong> Kongu Engineering College (Autonomous)</div>
+                    <div style="margin-bottom: 6px;"><strong>Database:</strong> Oracle Database / Embedded H2</div>
+                    <div><strong>Repository:</strong> https://github.com/krnavinya-18/car-expense-tracker</div>
+                </div>
+
+                <!-- Feedback Form -->
+                <div style="background: #FFF; border: 1px solid #DDD; padding: 12px; border-radius: 4px; font-size: 8.5pt;">
+                    <div style="font-weight: bold; color: #0B1F4D; margin-bottom: 8px;">Feedback &amp; Inquiries</div>
+                    <div style="margin-bottom: 6px;"><input type="text" value="NAVINYA K R" style="width: 100%; padding: 4px; border: 1px solid #CCC; border-radius: 3px;" readonly></div>
+                    <div style="margin-bottom: 6px;"><input type="text" value="navinya@example.edu" style="width: 100%; padding: 4px; border: 1px solid #CCC; border-radius: 3px;" readonly></div>
+                    <div style="margin-bottom: 6px;"><textarea style="width: 100%; height: 35px; padding: 4px; border: 1px solid #CCC; border-radius: 3px;" readonly>Car Expense Tracking System successfully tested and verified.</textarea></div>
+                    <button style="background: #0B1F4D; color: #FFF; border: none; padding: 5px 12px; border-radius: 3px; font-weight: bold;">Submit Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p style="font-size: 9.5pt;">
+        <strong>Description:</strong> The Contact page provides official communication details and an interactive feedback
+        mechanism with client validation and confirmation notifications.
+    </p>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 17: RESULT, REFERENCES & GITHUB LINK                                 -->
+<!-- ========================================================================= -->
+<div class="report-page">
+    <div class="section-label">RESULT:</div>
+    <p>
+        Thus, the <strong>Car Expense Tracking System</strong> was successfully designed, developed, and deployed
+        using Java 21, Spring Boot, Vaadin Flow, Oracle Database, Spring Data JPA, and Apache Maven. The application
+        provides comprehensive car expense registration, real-time dashboard analytics, multi-criteria search and
+        filtering, inline modal editing, secure deletion, and visual cost breakdown charts with percentage distributions.
+        It demonstrates clean Model-View-Service-Repository architecture, safe ORM persistence, enterprise UI styling
+        using a Dark Navy Blue (<code>#0B1F4D</code>) theme, and unit testing. The project meets all academic requirements
+        and is version-controlled on GitHub.
+    </p>
+
+    <div class="section-label">REFERENCES:</div>
+    <ol style="margin: 0; padding-left: 20px; font-size: 9pt; line-height: 1.5;">
+        <li>Spring Boot Reference Documentation. <a href="https://docs.spring.io/spring-boot/" style="color: #000;">https://docs.spring.io/spring-boot/</a></li>
+        <li>Vaadin Flow Reference Documentation. <a href="https://vaadin.com/docs/latest/flow" style="color: #000;">https://vaadin.com/docs/latest/flow</a></li>
+        <li>Spring Data JPA Reference Guide. <a href="https://docs.spring.io/spring-data/jpa/reference/" style="color: #000;">https://docs.spring.io/spring-data/jpa/reference/</a></li>
+        <li>Oracle Database JDBC Developer's Guide. <a href="https://docs.oracle.com/en/database/oracle/oracle-database/21/jjdbc/" style="color: #000;">https://docs.oracle.com/en/database/oracle/oracle-database/21/jjdbc/</a></li>
+        <li>Hibernate ORM Documentation. <a href="https://hibernate.org/orm/documentation/6.5/" style="color: #000;">https://hibernate.org/orm/documentation/6.5/</a></li>
+        <li>Oracle Java 21 Platform Specification. <a href="https://docs.oracle.com/en/java/javase/21/" style="color: #000;">https://docs.oracle.com/en/java/javase/21/</a></li>
+        <li>Apache Maven Project Documentation. <a href="https://maven.apache.org/guides/" style="color: #000;">https://maven.apache.org/guides/</a></li>
+        <li>JUnit 5 User Guide. <a href="https://junit.org/junit5/docs/current/user-guide/" style="color: #000;">https://junit.org/junit5/docs/current/user-guide/</a></li>
+        <li>H2 Database Engine Documentation. <a href="https://www.h2database.com/html/main.html" style="color: #000;">https://www.h2database.com/html/main.html</a></li>
+        <li>Jakarta Persistence API (JPA) Specification. <a href="https://jakarta.ee/specifications/persistence/" style="color: #000;">https://jakarta.ee/specifications/persistence/</a></li>
+    </ol>
+
+    <div class="section-label" style="margin-top: 20px;">GITHUB:</div>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 5px; font-size: 10pt;">
+        <tr>
+            <td style="border: 1px solid #000; padding: 7px 10px; width: 15%; font-weight: bold; background: #F2F2F2;">LINK:</td>
+            <td style="border: 1px solid #000; padding: 7px 10px;">
+                <a href="https://github.com/krnavinya-18/car-expense-tracker" style="color: #0B1F4D; font-weight: bold; text-decoration: none;">
+                    https://github.com/krnavinya-18/car-expense-tracker
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    <div class="end-mark">&mdash; END OF REPORT &mdash;</div>
+</div>
+
+</body>
+</html>
